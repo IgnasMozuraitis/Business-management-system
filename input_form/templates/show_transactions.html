@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Darbuotojų sąrašas</title>
+</head>
+<body>
+    <h1>Darbuotojų sąrašas</h1>
+    <ol>
+    {% for entry in entries %}
+        <p> Vardas:{{ entry[0] }} El. paštas: {{ entry[1] }} </p>
+    {% endfor %}
+    </ol>
+</body>
+</html>
