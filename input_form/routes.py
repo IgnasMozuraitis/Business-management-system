@@ -1,7 +1,5 @@
 from input_form import app
 
-
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, redirect, url_for
 import psycopg2
