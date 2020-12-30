@@ -41,7 +41,12 @@ except psycopg2.errors.DuplicateTable:
 
 @app.route('/')
 def index():
-    return render_template('add_user.html')
+    return render_template('add_user.html', title = 'Solarteka')
+
+@app.route('/test')
+def test():
+    return render_template('testing_extends.html', title = 'Solarteka')
+
 
 @app.route('/post_user', methods=['GET', 'POST'])
 def post_user():
@@ -65,5 +70,5 @@ def show_transactions():
     with connection:
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM transactions;")
-            transactions = cursor.fetchall()
-    return render_template('show_transactions.html', entries = transactions)
+            employee_page = cursor.fetchall()
+    return render_template('employee_page.html', entries = employee_page)

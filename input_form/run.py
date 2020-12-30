@@ -67,7 +67,7 @@ def show_transactions():
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM transactions;")
             transactions = cursor.fetchall()
-    return render_template('show_transactions.html', entries = transactions)
+    return render_template('employee_page.html', entries = transactions)
 
 
 if __name__ == "__main__":
