@@ -1,10 +1,11 @@
+from input_form import app
+
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, redirect, url_for
 import psycopg2
 
-
-app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 # app.debug = True
 db = SQLAlchemy(app)
@@ -68,7 +69,3 @@ def show_transactions():
             cursor.execute("SELECT * FROM transactions;")
             transactions = cursor.fetchall()
     return render_template('show_transactions.html', entries = transactions)
-
-
-if __name__ == "__main__":
-    app.run()
