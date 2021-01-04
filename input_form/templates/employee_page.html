@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Darbuotojų sąrašas</title>
-</head>
+{% extends 'layouts.html' %}
+
+
+{% block content %}
 <body>
     <h1>Darbuotojų sąrašas</h1>
     <ol>
@@ -12,4 +10,5 @@
     {% endfor %}
     </ol>
 </body>
-</html>
+
+{% endblock content %}

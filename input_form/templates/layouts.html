@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }}</title>
+
+<!-- Custom Main.css -->
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Solarteka</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('visual_data')}}">Vizualūs duomenys</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('clients')}}">Klientai</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('show_transactions')}}">Personalo valdymas</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Auto parkas</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sandėlis</a>
+        </li>
+          <a class="nav-link" href="#">Sąskaitos</a>
+        </li>
+          <a class="nav-link" href="#">Apskaita</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Projektai
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Projektų archyvas</a></li>
+            <li><a class="dropdown-item" href="#">Paskutinis aplankytas projektą</a></li>
+            <li><a class="dropdown-item" href="#">Priešpaskutinis aplankytas projektas</a></li>
+            <li><a class="dropdown-item" href="#">Projektas Nr. 125 </a></li>
+            <li><a class="dropdown-item" href="#">Projektas Nr. 126 </a></li>
+            <li><a class="dropdown-item" href="#">Projektas Nr. etc. </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <ul class="navbar-nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{url_for('signup')}}">Prisijungti</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{url_for('register')}}">Registruotis</a>
+  </li>
+</ul>
+</nav>
+</head>
+<body>
+     {% block content %}
+     {% endblock content %}
+
+<!-- Bootsrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>
