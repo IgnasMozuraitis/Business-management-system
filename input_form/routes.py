@@ -1,12 +1,14 @@
-from input_form import app
+from input_form import app, db
+from input_form.models import Client
 
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, redirect, url_for
 import psycopg2
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+from .forms import ClientInputForm, RegistrationForm
+
 # app.debug = True
-db = SQLAlchemy(app)
+
 POSTGRES_URI = "postgresql://postgres:admin@localhost:5432/postgres"
 
 connection = psycopg2.connect(POSTGRES_URI)
@@ -21,32 +23,36 @@ except psycopg2.errors.DuplicateTable:
     pass
 
 
-# transactions = [
-#     ('jonas', 'jonas@darbas.com'),
-#     ('Petras', 'petras@darbas.com')
-# ]
-
-
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_name = db.Column(db.String(30))
-#     email = db.Column(db.String(30), unique = True)
-#
-#     def __init__(self, username, email):
-#         self.username = username
-#         self.email = email
-#
-#     def __repr__(self):
-#         return '<User %r>' % self.username
+company_name = "Solarteka"
 
 @app.route('/')
 def index():
-    return render_template('add_user.html', title = 'Solarteka')
+    return render_template('add_user.html', title = company_name)
 
 @app.route('/test')
 def test():
-    return render_template('testing_extends.html', title = 'Solarteka')
+    return render_template('testing_extends.html', title = company_name)
 
+@app.route('/clients')
+def clients():
+    form = ClientInputForm()
+    return render_template('clients.html', title = company_name, form=form)
+
+@app.route('/vizualusduomenys')
+def visual_data():
+    return render_template('visual_data.html', title = company_name)
+
+@app.route('/registruotis')
+def register():
+    return render_template('register.html', title = 'Registruotis')
+
+@app.route('/prisijungti')
+def signup():
+    return render_template('signup.html', title = 'Prisijungti')
+
+# @app.route('/clients')
+# def clients():
+#     return render_template('clients.html', title = company_name)
 
 @app.route('/post_user', methods=['GET', 'POST'])
 def post_user():
@@ -65,7 +71,7 @@ def post_user():
     return redirect(url_for('index'))
 
 
-@app.route('/transactions')
+@app.route('/personalovaldymas')
 def show_transactions():
     with connection:
         with connection.cursor() as cursor:
