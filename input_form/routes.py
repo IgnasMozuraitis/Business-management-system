@@ -5,9 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, redirect, url_for
 import psycopg2
 
-from .forms import ClientInputForm, RegistrationForm
-
-# app.debug = True
+from .forms import ClientInputForm
 
 POSTGRES_URI = "postgresql://postgres:admin@localhost:5432/postgres"
 
@@ -23,24 +21,26 @@ except psycopg2.errors.DuplicateTable:
     pass
 
 
-company_name = "Solarteka"
+company_name_which_use_system = "Solarteka"
 
 @app.route('/')
 def index():
-    return render_template('add_user.html', title = company_name)
+    return render_template('add_user.html', title = company_name_which_use_system)
+
+@app.route('/clients', methods=['GET', 'POST'])
+def test():
+    form = ClientInputForm()
+    return render_template('testing_extends.html', title = company_name_which_use_system, form = form)
 
 @app.route('/test')
-def test():
-    return render_template('testing_extends.html', title = company_name)
-
-@app.route('/clients')
 def clients():
     form = ClientInputForm()
-    return render_template('clients.html', title = company_name, form=form)
+    #form.group_id.choices = [(g.id, g.name) for g in Group.query.order_by('name')]
+    return render_template('clients.html', title = company_name_which_use_system, form=form)
 
 @app.route('/vizualusduomenys')
 def visual_data():
-    return render_template('visual_data.html', title = company_name)
+    return render_template('visual_data.html', title = company_name_which_use_system)
 
 @app.route('/registruotis')
 def register():
@@ -52,7 +52,7 @@ def signup():
 
 # @app.route('/clients')
 # def clients():
-#     return render_template('clients.html', title = company_name)
+#     return render_template('clients.html', title = company_name_which_use_system)
 
 @app.route('/post_user', methods=['GET', 'POST'])
 def post_user():
