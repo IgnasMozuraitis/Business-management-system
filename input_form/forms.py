@@ -1,17 +1,18 @@
 
 from flask_wtf import FlaskForm, form
-from wtforms import StringField, SubmitField, IntegerField, SelectField, EmailField
+from wtforms import StringField, SubmitField, IntegerField
 from wtforms.validators import Required, Length, EqualTo
+# from wtforms import SelectField, EmailField
 
 
 class ClientInputForm(FlaskForm):
     company_name = StringField('Įmonės pavadinimas', validators = [Required()])
     manager = StringField('Įmonės vadovas')
-    #client_type = SelectField(u'Group', coerce=int)
-    mob_phone_number = IntegerField('Mob. Tel. Nr.')
-    email = EmailField('El. paštas')
-    country = StringField('Šalis')
-    comments = StringField('Komentarai')
+    # #client_type = SelectField(u'Group', coerce=int)
+    # mob_phone_number = IntegerField('Mob. Tel. Nr.')
+    # email = StringField('El. paštas')
+    # country = StringField('Šalis')
+    # comments = StringField('Komentarai')
     """
     website = URLField('Tinklapis (www)')
     Traceback (most recent call last):
@@ -25,7 +26,7 @@ class ClientInputForm(FlaskForm):
     from wtforms import StringField, URLField, SubmitField, IntegerField, SelectField, EmailField
     ImportError: cannot import name 'URLField' from 'wtforms' (/home/ubuntupc/solarteka/.venv/lib/python3.8/site-packages/wtforms/__init__.py)
     """
-    website = StringField('Tinklapis (www)')
+    # website = StringField('Tinklapis (www)')
     sumbit = SubmitField('Išsaugoti')
 
 
