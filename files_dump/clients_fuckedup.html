@@ -1,0 +1,89 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+<form method="POST">
+    <div class="col-md-4 position-relative">
+        {{ form.company_name.label }} {{ form.company_name }}
+    {{ form.manager.label}} {{ form.manager }}
+    {{ form.mob_phone_number.label}} {{ form.mob_phone_number }}
+    {{ form.mob_phone_number(class="form-control form-control-lg") }}
+    <!-- {{ form.email.label}} {{ form.email }} -->
+    {{ form.country.label}} {{ form.country }}
+    {{ form.comments.label}} {{ form.comments }}
+    {{ form.website.label}} {{ form.website }}
+    
+    <!-- {% for type in form.client_type %}
+    <tr>
+        <td>{{ type }}</td>
+        <td>{{ type.label }}</td>
+    </tr>
+    {% endfor %} -->
+    
+    {{ form.sumbit() }}
+</form>
+<form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltip01" class="form-label">{{ form.company_name.label }}</label>
+      <input type="text" class="form-control" id="validationTooltip01" value="DefaultValue" required>
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltip02" class="form-label">{{ form.manager.label}}</label>
+      <input type="text" class="form-control" id="validationTooltip02" value="DefaultValue" required>
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltipUsername" class="form-label">Username</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+        <div class="invalid-tooltip">
+          Please choose a unique and valid username.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 position-relative">
+      <label for="validationTooltip03" class="form-label">City</label>
+      <input type="text" class="form-control" id="validationTooltip03" required>
+      <div class="invalid-tooltip">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 position-relative">
+      <label for="validationTooltip04" class="form-label">State</label>
+      <select class="form-select" id="validationTooltip04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+        <option>...</option>
+        <option>...</option>
+      </select>
+      <div class="invalid-tooltip">
+        Please select a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 position-relative">
+      <label for="validationTooltip05" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="validationTooltip05" required>
+      <div class="invalid-tooltip">
+        Please provide a valid zip.
+      </div>
+      <form class="was-validated">
+        <div class="mb-3">
+          <label for="validationTextarea" class="form-label">{{form.comments.label}}</label>
+          <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+          <div class="invalid-feedback">
+            Please enter a message in the textarea.
+          </div>
+        </div>
+    </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+
+
+<script src="{{url_for('static',filename='main.js')}}"></script>
+{% endblock content %}
