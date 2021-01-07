@@ -5,7 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, redirect, url_for
 import psycopg2
 
-from .forms import ClientInputForm
+from .forms import ClientInputForm, BigTestForm
+
+
+from datetime import datetime
+
+
+
 
 POSTGRES_URI = "postgresql://postgres:admin@localhost:5432/postgres"
 
@@ -78,3 +84,42 @@ def show_transactions():
             cursor.execute("SELECT * FROM transactions;")
             employee_page = cursor.fetchall()
     return render_template('employee_page.html', entries = employee_page)
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/big_test", methods = ["GET", "POST"])
+def client_input():
+    form = BigTestForm()
+    # if form.validate_on_sumbit():
+    #     return "Sėkmingai išsaugota"    
+    return render_template("big_test.html", form = form)
+
+@app.route("/get_data_from_input", methods = ['GET','POST'])
+def show_data():
+    form = BigTestForm()
+    # information_to_save_from_html_to_database = BigTestDatabase(company_name_database = client_name_input_from_html, phone_number_database = client_number_input_from_html)
+    # db.session.add(information_to_save_from_html_to_database)
+    # db.session.commit()
+    
+    client_name_input_from_html = form.company_name.data
+    client_number_input_from_html = form.phone_number.data
+    return client_name_input_from_html + ' kurio vertė ' + str(client_number_input_from_html)
+
+
+class BigTestDatabase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company_name_database = db.Column(db.String(40))
+    phone_number_database = db.Column(db.Integer)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __init__(self, company_name_database, phone_number_database):
+        self.company_name_database = company_name_database
+        self.phone_number_database = phone_number_database
