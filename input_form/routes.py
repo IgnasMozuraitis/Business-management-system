@@ -27,7 +27,7 @@ except psycopg2.errors.DuplicateTable:
     pass
 
 
-company_name_which_use_system = "Solarteka"
+company_name_which_use_system = "Įmonės pavadinimas"
 
 @app.route('/')
 def index():
