@@ -47,3 +47,12 @@ class ClientInputForm(FlaskForm):
 #     password = PasswordField('Slaptažodis', validators=[DataRequired()])
 #     remember = BooleanField('Prisiminti mane')
 #     submit = SubmitField('Prisijungti')
+
+
+
+
+
+class BigTestForm(FlaskForm):
+  company_name = StringField('Kliento pavadinimas', validators = [Required()])
+  phone_number = IntegerField('Mob. Tel. Nr.', validators = [Required()])
+  sumbit = SubmitField('Išsaugoti')
